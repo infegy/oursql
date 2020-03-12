@@ -1,5 +1,5 @@
 
-/* generated on Thu Jan 28 11:05:33 2010 */
+/* generated on Wed Feb 24 14:55:22 2010 */
 
 enum _oursqlx_exception_type _oursqlx_exc_from_errno(int err) {
     switch (err) {
@@ -617,23 +617,10 @@ enum _oursqlx_exception_type _oursqlx_exc_from_errno(int err) {
             return _oursqlx_PermissionsError;
 
         default:
-           #if MYSQL_VERSION_ID >= 50700 
-              for(unsigned int i = 0; i < sizeof(errmsg_section_start)/sizeof(int); ++i) {
-                int min = errmsg_section_start[i];
-                int max = errmsg_section_start[i] + errmsg_section_size[i] - 1;
-                if ( err >= min && err <= max ) {
-                  return _oursqlx_ProgrammingError;
-                }             
-              }
-              if ( err > CR_MIN_ERROR && err < CR_MAX_ERROR) {
-                 return _oursqlx_InterfaceError;
-              }
-           #else
-              if (err >= ER_ERROR_FIRST && err <= ER_ERROR_LAST)
-                  return _oursqlx_ProgrammingError;
-              else if (err > CR_MIN_ERROR && err < CR_MAX_ERROR)
-                  return _oursqlx_InterfaceError;
-           #endif
+            if (err >= 1000 && err <= 1566)
+                return _oursqlx_ProgrammingError;
+            else if (err > CR_MIN_ERROR && err < CR_MAX_ERROR)
+                return _oursqlx_InterfaceError;
     }
     return _oursqlx_UnknownError;
 }

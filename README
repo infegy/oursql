@@ -1,4 +1,5 @@
-oursql v0.9.3.2!
+oursql v0.9.5!
+Lightly modified by Justin Graves / Infegy to build on Python 3 with MySQL 8
 
 Comprehensive documentation for oursql is available online:
 http://packages.python.org/oursql/
